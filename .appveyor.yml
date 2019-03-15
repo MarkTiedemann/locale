@@ -1,0 +1,19 @@
+install:
+  - ps: iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
+  - ps: scoop bucket add extras
+  - ps: scoop install visualc
+artifacts:
+  - path: locale.exe
+    name: locale.exe
+build_script:
+  - cl locale.c
+test_script:
+  - locale
+deploy:
+  provider: GitHub
+  auth_token:
+    secure: gskuIEvm/3WstF5xkqyBHD2w+qmfvKS7WsulFPQX9ZTj0bcGWxpikHjdnyJi7ksn
+  artifact: locale.exe
+  on:
+    APPVEYOR_REPO_TAG: true
+    APPVEYOR_REPO_NAME: MarkTiedemann/locale
