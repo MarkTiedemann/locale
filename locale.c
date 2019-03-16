@@ -1,8 +1,8 @@
-#include "windows.h"
-#include "stdio.h"
+#include <windows.h>
+#include <stdio.h>
 
 main() {
 	WCHAR locale[LOCALE_NAME_MAX_LENGTH];
 	GetUserDefaultLocaleName(locale, LOCALE_NAME_MAX_LENGTH);
-	wprintf(L"%s", locale);
+	fputws(locale, stdout);
 }
