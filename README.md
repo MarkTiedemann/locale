@@ -10,15 +10,16 @@ Download the binary from [releases](https://github.com/MarkTiedemann/locale/rele
 
 ## Usage
 
-```cmd
-λ locale
-en-US
+```batch
+:: If Windows Vista or greater
+$ locale
+{"locale":"en-US"}
+
+:: Else
+$ locale
+{"lcid":1033}
+
 ```
-
-## Development
-
-- **Build**: `cl locale.c`
-- **Test**: `locale`
 
 ## License
 

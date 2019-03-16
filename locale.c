@@ -1,15 +1,21 @@
 #include "windows.h"
 #include "stdio.h"
-#define BUFFER_SIZE 32
+#include <VersionHelpers.h>
 
-int main (void) {
-	// https://docs.microsoft.com/en-us/windows/desktop/api/winnls/nf-winnls-getsystemdefaultlocalename
-	WCHAR buf[BUFFER_SIZE];
-	int len = GetSystemDefaultLocaleName(buf, BUFFER_SIZE);
-	if (len > 0) {
-		wprintf(L"%s", buf);
-		return 0;
-    } else {
-		return 1;
+int main(void)
+{
+	// https://docs.microsoft.com/en-us/windows/desktop/api/versionhelpers/nf-versionhelpers-iswindowsvistaorgreater
+	if (IsWindowsVistaOrGreater())
+	{
+		// https://docs.microsoft.com/en-us/windows/desktop/api/winnls/nf-winnls-getsystemdefaultlocalename
+		WCHAR locale[LOCALE_NAME_MAX_LENGTH];
+		GetUserDefaultLocaleName(locale, LOCALE_NAME_MAX_LENGTH);
+		wprintf(L"{\"locale\":\"%s\"}\n", locale);
 	}
+	else
+	{
+		// https://docs.microsoft.com/en-us/windows/desktop/api/winnls/nf-winnls-getuserdefaultlcid
+		printf("{\"lcid\":%d}\n", GetUserDefaultLCID());
+	}
+	return 0;
 }
