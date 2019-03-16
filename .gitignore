@@ -1,5 +1,2 @@
-.vscode
 *.obj
 *.exe
-include/um
-include/shared

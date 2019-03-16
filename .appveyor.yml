@@ -6,7 +6,7 @@ artifacts:
   - path: locale.exe
     name: locale.exe
 build_script:
-  - make
+  - cl locale.c
 test_script:
   - locale
 deploy:

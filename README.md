@@ -11,14 +11,8 @@ Download the binary from [releases](https://github.com/MarkTiedemann/locale/rele
 ## Usage
 
 ```batch
-:: If Windows Vista or greater
-$ locale
-{"locale":"en-US"}
-
-:: Else
-$ locale
-{"lcid":1033}
-
+> locale
+en-US
 ```
 
 ## License
