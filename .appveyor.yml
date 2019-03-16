@@ -1,12 +1,12 @@
 install:
   - ps: iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
   - ps: scoop bucket add extras
-  - ps: scoop install visualc
+  - ps: scoop install make visualc
 artifacts:
   - path: locale.exe
     name: locale.exe
 build_script:
-  - cl locale.c
+  - make
 test_script:
   - locale
 deploy:
